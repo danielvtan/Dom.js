@@ -84,40 +84,6 @@ function Dom() {
 		loopSearch(ids[0], parents);
 		return d;
 	}
-	/** Function: addClass
-        add a class to an element
-        
-        Parameters:
-        target - dom target
-		className - name of the class
-        
-        See Also:
-        <removeClass>
-	*/
-	this.addClass = function(target, className) {
-		var newClass = (target.className == "") ? className : target.className + " " + className;
-		target.className = newClass;
-	}
-	/** Function: removeClass
-        remove a class to an element
-        
-        Parameters:
-		target - dom target
-		className - name of the class
-        
-        See Also:
-        <addClass>
-	*/
-	this.removeClass = function(target, className) {
-		var classNames = target.className.split(" ");
-		var newClass = "";
-		for( var i = 0; i < classNames.length; ++i) {
-			if(className != classNames[i]) {
-				newClass += (i == 0) ? classNames[i] : " " + classNames[i];
-			}
-		}
-		target.className = newClass;
-	}
 	function searchID(id, parent) {
 		parent = (parent == undefined) ? doc : parent;
 		var d = parent.getElementById(id);
@@ -189,13 +155,13 @@ function Dom() {
 			},
             addClass:function(cssClass) {
                 for(var i = 0; i < thisFunc.list.length; ++i) {
-                    Dom.addClass(thisFunc.list[i], cssClass);
+                    Css.addClass(thisFunc.list[i], cssClass);
                 }
                 return thisFunc.searchLoop(thisFunc.id, thisFunc.parents);
             },
             removeClass:function(cssClass) {
                 for(var i = 0; i < thisFunc.list.length; ++i) {
-                    Dom.removeClass(thisFunc.list[i], cssClass);
+                    Css.removeClass(thisFunc.list[i], cssClass);
                 }
                 return thisFunc.searchLoop(thisFunc.id, thisFunc.parents);
             }
@@ -212,21 +178,39 @@ window.el = Dom.el;
     creates a new instance of Css. By default Css is already instantiated
 */
 function Css() {
-	var rules = {};
-	/** Function: rule
-        save a rule object
+    /** Function: addClass
+        add a class to an element
         
         Parameters:
-		name - name/class rule
-		css - rule object
+        target - dom target
+		className - name of the class
         
-        (start code)
-        // returns apply the css object rules
-        Css.apply(dom, { width:"100px"});
-        (end)
+        See Also:
+        <removeClass>
 	*/
-	this.rule = function(name, css) {
-			rules[name] = css;
+	this.addClass = function(dom, className) {
+		var newClass = (dom.className == "") ? className : dom.className + " " + className;
+		dom.className = newClass;
+	}
+	/** Function: removeClass
+        remove a class to an element
+        
+        Parameters:
+		target - dom target
+		className - name of the class
+        
+        See Also:
+        <addClass>
+	*/
+	this.removeClass = function(dom, className) {
+		var classNames = dom.className.split(" ");
+		var newClass = "";
+		for( var i = 0; i < classNames.length; ++i) {
+			if(className != classNames[i]) {
+				newClass += (i == 0) ? classNames[i] : " " + classNames[i];
+			}
+		}
+		dom.className = newClass;
 	}
 	/** Function: apply
         apply a rule/css object
@@ -239,8 +223,6 @@ function Css() {
         the dom element
 	*/
 	this.apply = function(dom, css) {
-				if(rules[css])
-					css = rules[css];
 				for(var attrib in css) {
 					dom.style[attrib] = css[attrib];
 				}
