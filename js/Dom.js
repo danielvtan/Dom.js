@@ -206,6 +206,7 @@ function Dom() {
     }
 }
 window.Dom = new Dom();
+window.el = Dom.el;
 
 /** Class: Css
     creates a new instance of Css. By default Css is already instantiated
