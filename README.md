@@ -39,8 +39,11 @@ these all returns the ff functions that can be used to manipulate the element
 * each function also returns the functions first returned which can be used in chain calling (except for `_dom()`)
 
 ```javascript
-Selector.el("#testID").addClass("test-class").set("onmouseover", function(){}).css({ background: "#000"})
-         .addClass("class-name");
+Selector.el("#testID")
+        .addClass("test-class")
+        .set("onmouseover", function(){})
+        .css({ background: "#000"})
+        .addClass("class-name");
 ```
 ## How to use the element selector
 ```javascript
