@@ -26,7 +26,7 @@ Selector.el(".test-class-parent .test-class")
 Selector.el(".test-class-parent .test-class div")
 ```
 you can also use el as Shortcut for Selector.el
-```
+```javascript
 el("testID")
 ```
 these all returns the ff functions that can be used to manipulate the element
