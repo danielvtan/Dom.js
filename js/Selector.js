@@ -1,7 +1,7 @@
-/** Class: Dom
-    creates a new instance of Dom. By default Dom is already instantiated
+/** Class: Selector
+    creates a new instance of Selector. By default Selector is already instantiated
 */
-function Dom() {
+function Selector() {
 	var doc = document;
 	this.type = {
 		DIV:"DIV",
@@ -21,7 +21,7 @@ function Dom() {
         
         (start code)
         // returns div element with an id of testID
-        Dom.create("div", testID);
+        Selector.create("div", testID);
         (end)
 	*/
 	this.create = function(type, id) {
@@ -41,15 +41,15 @@ function Dom() {
 		
 		(start code)
 		// returns a normal dom element
-		Dom.el("testID") // get element by id
+		Selector.el("testID") // get element by id
 		// returns an object with functions
-		Dom.el("#testID") // get element by id
+		Selector.el("#testID") // get element by id
 		// returns an object with functions
-		Dom.el(".test-class") // get element by class name
+		Selector.el(".test-class") // get element by class name
 		// returns an object with functions
-		Dom.el("DIV") // get element by tag
+		Selector.el("DIV") // get element by tag
 		// returns an object with functions
-		Dom.el(".test-class DIV") // get element by class and tag
+		Selector.el(".test-class DIV") // get element by class and tag
         (end)
 	*/
 	this.el = function(id, parents) {
@@ -171,8 +171,8 @@ function Dom() {
         return data;
     }
 }
-window.Dom = new Dom();
-window.el = Dom.el;
+window.Selector = new Selector();
+window.el = Selector.el;
 
 /** Class: Css
     creates a new instance of Css. By default Css is already instantiated
