@@ -1,7 +1,7 @@
-#Dom.js
+# Selector.js
 an alternative element selector using id/class with element manipulation functionalities
 
-###Features
+### Features
 * select an element by:
    * id
    * class name
@@ -15,15 +15,19 @@ an alternative element selector using id/class with element manipulation functio
    * set style
    * access of element attributes
 
-###Element selector example
+### Element selector example
 ```javascript
-Dom.el("testID")
-Dom.el("#testID")
-Dom.el(".test-class")
-Dom.el("div")
-Dom.el("#testID .test-class")
-Dom.el(".test-class-parent .test-class") 
-Dom.el(".test-class-parent .test-class div") 
+Selector.el("testID")
+Selector.el("#testID")
+Selector.el(".test-class")
+Selector.el("div")
+Selector.el("#testID .test-class")
+Selector.el(".test-class-parent .test-class") 
+Selector.el(".test-class-parent .test-class div")
+```
+you can also use el as Shortcut for Selector.el
+```
+el("testID")
 ```
 these all returns the ff functions that can be used to manipulate the element
 * `addClass("class-name")` - add a class name
@@ -35,31 +39,31 @@ these all returns the ff functions that can be used to manipulate the element
 * each function also returns the functions first returned which can be used in chain calling (except for `_dom()`)
 
 ```javascript
-Dom.el("#testID").addClass("test-class").set("onmouseover", function(){}).css({ background: "#000"})
+Selector.el("#testID").addClass("test-class").set("onmouseover", function(){}).css({ background: "#000"})
          .addClass("class-name");
 ```
-##How to use the element selector
+## How to use the element selector
 ```javascript
 // returns a normal dom element
 // use as a normal element
-Dom.el("testID") // by id
+Selector.el("testID") // by id
 
 // returns an object with functions
 // can be used to manipulate a single element
-Dom.el("#testID") // by id
+Selector.el("#testID") // by id
 
 // returns an object with functions
 // can be used to manipulate all element with the specified class
-Dom.el(".test-class") // by class
+Selector.el(".test-class") // by class
 
 // returns an object with functions
 // can be used to manipulate all element with the specified class
-Dom.el("div") // by tags
+Selector.el("div") // by tags
 
 
 // use spaces if you need to specify targeted elements
 // returns an object with functions
 // can be used to manipulate all element with the specified class
-Dom.el("#testID .test-class") // by tags
+Selector.el("#testID .test-class") // by tags
 
 ```
