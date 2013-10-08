@@ -132,7 +132,7 @@ function Selector() {
 			},
 			css:function(css) {
                for(var i = 0; i < thisFunc.list.length; ++i) {
-                    Css.apply(thisFunc.list[i], css);
+                    Selector.apply(thisFunc.list[i], css);
                 }
                 return thisFunc.searchLoop(thisFunc.id, thisFunc.parents);
 			},
@@ -155,13 +155,13 @@ function Selector() {
 			},
             addClass:function(cssClass) {
                 for(var i = 0; i < thisFunc.list.length; ++i) {
-                    Css.addClass(thisFunc.list[i], cssClass);
+                    Selector.addClass(thisFunc.list[i], cssClass);
                 }
                 return thisFunc.searchLoop(thisFunc.id, thisFunc.parents);
             },
             removeClass:function(cssClass) {
                 for(var i = 0; i < thisFunc.list.length; ++i) {
-                    Css.removeClass(thisFunc.list[i], cssClass);
+                    Selector.removeClass(thisFunc.list[i], cssClass);
                 }
                 return thisFunc.searchLoop(thisFunc.id, thisFunc.parents);
             }
@@ -170,14 +170,7 @@ function Selector() {
 			data = undefined;
         return data;
     }
-}
-window.Selector = new Selector();
-window.el = Selector.el;
-
-/** Class: Css
-    creates a new instance of Css. By default Css is already instantiated
-*/
-function Css() {
+    
     /** Function: addClass
         add a class to an element
         
@@ -223,13 +216,14 @@ function Css() {
         the dom element
 	*/
 	this.apply = function(dom, css) {
-				for(var attrib in css) {
-					dom.style[attrib] = css[attrib];
-				}
-				return dom;
-		}
+            for(var attrib in css) {
+                dom.style[attrib] = css[attrib];
+            }
+            return dom;
+    }
 }
-window.Css = new Css();
+window.Selector = new Selector();
+window.el = Selector.el;
 
 // if Array.prototype.indexOf is not supported
 if (!Array.prototype.indexOf) {
